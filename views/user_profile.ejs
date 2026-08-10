@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Portal | Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#111111',
+            accent: '#f97316',
+            offwhite: '#f5f5f5'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-offwhite font-sans text-primary">
+
+  <!-- Navbar -->
+  <nav class="bg-primary text-white px-6 py-4 flex flex-wrap justify-between items-center shadow">
+    <h1 class="text-xl font-bold w-full sm:w-auto text-center sm:text-left mb-4 sm:mb-0">Citizen Portal</h1>
+    <ul class="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-6 w-full sm:w-auto">
+      <li><a href="/user" class="hover:text-accent block">Home</a></li>
+      <li><a href="/user/reports" class="hover:text-accent block">Track My Reports</a></li>
+      <li><a href="/user/explore" class="hover:text-accent block">Explore Issues</a></li>
+      <li><a href="/user/notifications" class="hover:text-accent block">Notifications</a></li>
+      <li><a href="/user/profile" class="text-accent font-semibold block">Profile</a></li>
+    </ul>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+
+    <!-- User Info -->
+    <section class="bg-white rounded-2xl shadow p-6 mb-8">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+        <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-accent to-primary flex items-center justify-center text-2xl font-bold text-white shadow flex-shrink-0">
+          <%= user.username[0] %>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold"><%= user.username %></h2>
+          <p class="text-gray-600"><%= user.email %></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="bg-white rounded-2xl shadow p-6 mb-8">
+      <h3 class="text-xl font-semibold mb-4">📝 Bio</h3>
+      <form action="/user/update" method="POST" class="space-y-4">
+        <textarea 
+          name="bio" 
+          rows="4" 
+          class="w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-accent outline-none resize-none"
+          placeholder="Write something about yourself..."><%= user.bio || '' %></textarea>
+        <button class="w-full sm:w-auto bg-accent text-white px-6 py-2 rounded-lg shadow hover:bg-orange-500 transition">
+          Save Bio
+        </button>
+      </form>
+    </section>
+
+    <!-- Rewards -->
+    <section class="bg-white rounded-2xl shadow p-6 mb-8">
+  <h3 class="text-xl font-semibold mb-4">🏆 Badges & Points</h3>
+  <p class="text-gray-600 mb-4">Your contribution helps the community. Earn points for active participation.</p>
+
+  <!-- Badges Row -->
+  <div class="flex items-center gap-6 mb-4">
+    <% if ((user.points || 0) < 100) { %>
+      <div class="flex flex-col items-center">
+        <img src="https://img.icons8.com/emoji/96/baby-chick.png" alt="Newbie Badge" class="w-12 h-12">
+        <span class="text-sm font-medium text-gray-700 mt-1">Newbie</span>
+      </div>
+    <% } %>
+
+    <% if ((user.points || 0) >= 100 && user.points < 500) { %>
+      <div class="flex flex-col items-center">
+        <img src="https://img.icons8.com/color/96/seed-of-life.png" alt="Contributor Badge" class="w-12 h-12">
+        <span class="text-sm font-medium text-gray-700 mt-1">Contributor</span>
+      </div>
+    <% } %>
+
+    <% if ((user.points || 0) >= 500 && user.points < 1000) { %>
+      <div class="flex flex-col items-center">
+        <img src="https://img.icons8.com/fluency/96/rocket.png" alt="Achiever Badge" class="w-12 h-12">
+        <span class="text-sm font-medium text-gray-700 mt-1">Achiever</span>
+      </div>
+    <% } %>
+
+    <% if ((user.points || 0) >= 1000) { %>
+      <div class="flex flex-col items-center">
+        <img src="https://img.icons8.com/fluency/96/crown.png" alt="Legend Badge" class="w-12 h-12">
+        <span class="text-sm font-medium text-gray-700 mt-1">Legend</span>
+      </div>
+    <% } %>
+  </div>
+
+  <!-- Points + Leaderboard Button -->
+  <div class="bg-offwhite p-4 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+    <span class="font-bold text-lg">Total Points: <%= user.points || 0 %></span>
+    <a href="/user/leaderboard">
+      <button class="w-full sm:w-auto bg-primary text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition">
+        View Leaderboard
+      </button>
+    </a>
+  </div>
+</section>
+
+
+    <!-- Logout -->
+    <div class="text-center">
+      <a href="/user/logout" class="inline-block w-full sm:w-auto bg-red-500 text-white px-6 py-2 rounded-lg shadow hover:bg-red-600 transition">Logout</a>
+    </div>
+
+  </main>
+
+</body>
+</html>
