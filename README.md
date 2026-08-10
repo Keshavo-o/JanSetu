@@ -319,7 +319,7 @@ http://localhost:3000
 JanSetu can be expanded into a production-scale civic technology platform.
 
 
-### AI-Based Issue Classification
+### 1. AI-Based Issue Classification
 
 Integrate machine learning or LLM-based classification to automatically categorize submitted complaints.
 
@@ -342,7 +342,7 @@ Relevant Department
 
 This can reduce manual categorization and improve issue routing.
 
-### Automatic Location Detection
+### 2. Automatic Location Detection
 
 Use browser geolocation and mapping services to automatically capture the user's location when submitting a complaint.
 
@@ -373,7 +373,7 @@ Resolved
 
 Citizens could receive updates without refreshing the page.
 
-### Notification System
+### 3. Notification System
 
 Introduce multi-channel notifications through:
 
@@ -396,7 +396,7 @@ Report C ─┘
 
 This would help prevent authorities from processing the same problem repeatedly.
 
-### Analytics Dashboard
+### 4. Analytics Dashboard
 
 A more advanced administrative dashboard could provide:
 
@@ -419,7 +419,7 @@ Replace local file storage with scalable cloud object storage such as:
 
 This would make media handling more suitable for production deployments.
 
-### Civic Issue Heatmaps
+### 5. Civic Issue Heatmaps
 
 Geospatial analytics could visualize areas with high concentrations of civic complaints.
 
@@ -446,7 +446,7 @@ Classification
     └── Water ───────► Water Department
 ```
 
-### Progressive Web App
+### 6. Progressive Web App
 
 Convert JanSetu into a PWA to provide:
 
