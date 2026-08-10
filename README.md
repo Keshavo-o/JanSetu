@@ -64,9 +64,9 @@ Administrators have a separate workflow for managing users and reported civic is
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 👤 Citizen Module
+###  Citizen Module
 
 * User registration and login
 * OTP-based verification
@@ -82,13 +82,13 @@ Administrators have a separate workflow for managing users and reported civic is
 * Location-based issue visualization
 * User activity
 
-### 🗺️ Location-Based Reporting
+### Location-Based Reporting
 
 Reported issues can be associated with geographical information, allowing civic problems to be visualized geographically.
 
 The public map functionality helps users understand where reported issues are concentrated.
 
-### 📝 Civic Issue Posts
+### Civic Issue Posts
 
 Users can create issue posts containing relevant information about the reported problem.
 
@@ -100,7 +100,7 @@ Posts can be publicly viewed and interacted with through:
 * User information
 * Uploaded media
 
-### 🔐 Authentication & Authorization
+### Authentication & Authorization
 
 JanSetu implements separate authentication workflows for citizens and administrators.
 
@@ -113,19 +113,19 @@ The backend uses:
 * Protected user routes
 * Protected administrative routes
 
-### 👨‍💼 Admin Module
+### Admin Module
 
 Administrators have dedicated routes and controllers for managing the platform.
 
 The architecture separates administrative functionality from regular citizen functionality, allowing different permissions and workflows.
 
-### 📧 OTP / Email Services
+### OTP / Email Services
 
 The backend includes an OTP verification workflow and email functionality using **Nodemailer**.
 
 This provides a foundation for account verification and future notification systems.
 
-### 📁 File Uploads
+### File Uploads
 
 The application supports uploading media associated with civic issue reports using **Multer**.
 
@@ -133,7 +133,7 @@ Uploaded content is handled separately from the application's static frontend as
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 JanSetu follows a modular server-side architecture built around Express.js.
 
@@ -185,42 +185,22 @@ The repository currently separates **routers, controllers, admin controllers, mi
 
 ## 🛠️ Tech Stack
 
-### Backend
-
-* **Node.js**
-* **Express.js 5**
-* **MongoDB**
-* **Mongoose**
-
-### Frontend
-
-* **EJS**
-* HTML
-* CSS
-* JavaScript
-
-### Authentication & Security
-
-* **JSON Web Tokens (JWT)**
-* HTTP Cookies
-* Express middleware
-* Role-based authorization
-
-### File & Communication Services
-
-* **Multer** — multipart/form-data and file uploads
-* **Nodemailer** — email/OTP functionality
-
-### Development
-
-* **Nodemon**
-* **npm**
+* **Node.js & Express.js** — RESTful backend and API architecture
+* **MongoDB & Mongoose** — Data persistence and schema management
+* **EJS** — Dynamic server-side rendering
+* **JWT & Role-Based Authorization** — Secure citizen/admin access control
+* **Leaflet.js + OpenStreetMap** — Interactive civic issue mapping
+* **Geolocation & Nominatim API** — Location detection and reverse geocoding
+* **Multer** — Multimedia/image upload handling
+* **Nodemailer + OTP** — Email verification and authentication workflows
+* **MVC Architecture** — Modular controllers, services, models, middleware and routes
+* **Nodemon** — Development workflow
 
 The project's current dependencies include Express 5, Mongoose 8, EJS, JWT, Multer, Nodemailer, cookie-parser, and Nodemon.
 
 ---
 
-## 🔄 Application Flow
+## Application Flow
 
 ```text
 Citizen
@@ -257,7 +237,7 @@ Issue Resolution
 
 ---
 
-## 🔐 Security Model
+##  Security Model
 
 JanSetu separates citizen and administrative access through dedicated middleware.
 
@@ -270,44 +250,6 @@ Protected user routes require successful authentication before access is granted
 Administrative routes are protected separately using dedicated admin authorization middleware.
 
 This separation allows the system to support different privileges for:
-
-```text
-Citizen
-   ↓
-Authenticated User
-   ↓
-User-specific Operations
-
-
-Administrator
-   ↓
-Admin Authentication
-   ↓
-Administrative Operations
-```
-
----
-
-## 📊 Database
-
-JanSetu uses **MongoDB** as its primary database with **Mongoose** for schema modeling and database interaction.
-
-The application establishes a connection to the JanSetu MongoDB database during server initialization.
-
-```text
-Application
-     │
-     ▼
-Express.js
-     │
-     ▼
-Mongoose
-     │
-     ▼
-MongoDB
-```
-
-MongoDB provides the flexibility required for storing users, civic reports, interactions, authentication-related data, and other platform entities.
 
 ---
 
@@ -334,7 +276,15 @@ cd JanSetu
 npm install
 ```
 
-### 3. Start MongoDB
+### 3. Don't forget to make a sensitive_data.json in the directory
+
+```bash
+{
+    "email_key": <Your email key>
+}
+```
+
+### 4. Start MongoDB
 
 Make sure your local MongoDB server is running.
 
@@ -344,7 +294,7 @@ The current application is configured to connect to:
 mongodb://localhost:27017/JanSetu
 ```
 
-### 4. Start the development server
+### 5. Start the development server
 
 ```bash
 npm run dev
@@ -364,34 +314,12 @@ http://localhost:3000
 
 ---
 
-## 📁 Project Structure
-
-```text
-JanSetu/
-│
-├── Routers/
-├── admin_controllers/
-├── controllers/
-├── middlewares/
-├── models/
-├── public/
-├── services/
-├── uploads/
-├── views/
-│
-├── index.js
-├── package.json
-├── package-lock.json
-└── README.md
-```
-
----
-
-## 🔮 Future Implementations
+## Future Implementations
 
 JanSetu can be expanded into a production-scale civic technology platform.
 
-### 🤖 AI-Based Issue Classification
+
+### AI-Based Issue Classification
 
 Integrate machine learning or LLM-based classification to automatically categorize submitted complaints.
 
@@ -414,7 +342,7 @@ Relevant Department
 
 This can reduce manual categorization and improve issue routing.
 
-### 📍 Automatic Location Detection
+### Automatic Location Detection
 
 Use browser geolocation and mapping services to automatically capture the user's location when submitting a complaint.
 
@@ -425,7 +353,7 @@ Future versions could integrate:
 * Mapbox
 * Geospatial MongoDB queries
 
-### 🔁 Real-Time Status Updates
+### Real-Time Status Updates
 
 Introduce WebSockets or Socket.IO to provide real-time updates when an issue changes state.
 
@@ -445,7 +373,7 @@ Resolved
 
 Citizens could receive updates without refreshing the page.
 
-### 🔔 Notification System
+### Notification System
 
 Introduce multi-channel notifications through:
 
@@ -456,7 +384,7 @@ Introduce multi-channel notifications through:
 
 Users could be notified whenever their complaint changes status.
 
-### 🧠 Duplicate Issue Detection
+### Duplicate Issue Detection
 
 AI and geospatial analysis could identify multiple reports describing the same civic issue.
 
@@ -468,7 +396,7 @@ Report C ─┘
 
 This would help prevent authorities from processing the same problem repeatedly.
 
-### 📈 Analytics Dashboard
+### Analytics Dashboard
 
 A more advanced administrative dashboard could provide:
 
@@ -481,7 +409,7 @@ A more advanced administrative dashboard could provide:
 * Complaint trends
 * User participation metrics
 
-### ☁️ Cloud Storage
+### Cloud Storage
 
 Replace local file storage with scalable cloud object storage such as:
 
@@ -491,7 +419,7 @@ Replace local file storage with scalable cloud object storage such as:
 
 This would make media handling more suitable for production deployments.
 
-### 🗺️ Civic Issue Heatmaps
+### Civic Issue Heatmaps
 
 Geospatial analytics could visualize areas with high concentrations of civic complaints.
 
@@ -502,7 +430,7 @@ Low Density ───────► High Density
 
 This could help authorities prioritize areas requiring immediate attention.
 
-### 🏢 Department-Based Routing
+###  Department-Based Routing
 
 Future versions could automatically route complaints to the appropriate municipal department.
 
@@ -518,7 +446,7 @@ Classification
     └── Water ───────► Water Department
 ```
 
-### 📱 Progressive Web App
+### Progressive Web App
 
 Convert JanSetu into a PWA to provide:
 
@@ -530,7 +458,7 @@ Convert JanSetu into a PWA to provide:
 
 ---
 
-## 📌 Future Architecture
+## Future Architecture
 
 A production-scale version could evolve from the current monolithic Express architecture into a more scalable system:
 
@@ -565,7 +493,7 @@ This architecture would allow individual services to scale independently as plat
 
 ---
 
-## 🌍 Impact
+## Impact
 
 JanSetu is built around the idea of making civic participation more accessible and transparent.
 
@@ -581,7 +509,7 @@ The platform aims to:
 
 ---
 
-## 🏆 Hackathon Context
+## Hackathon Context
 
 JanSetu was developed as part of **Smart India Hackathon 2025**, addressing the crowdsourced civic issue reporting and resolution problem statement.
 
@@ -589,7 +517,7 @@ The project represents an attempt to apply full-stack web technologies to a real
 
 ---
 
-## 👨‍💻 Project
+## Project
 
 **JanSetu — Smart Civic Issue Reporting & Resolution Platform**
 
@@ -597,8 +525,4 @@ Built using:
 
 `Node.js` · `Express.js` · `MongoDB` · `Mongoose` · `EJS` · `JWT` · `Multer` · `Nodemailer`
 
----
 
-## 📄 License
-
-This project is currently intended as an academic and hackathon project.
