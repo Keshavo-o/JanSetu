@@ -1,4 +1,4 @@
-# 🇮🇳 JanSetu
+# JanSetu
 
 ### Smart Civic Issue Reporting & Resolution Platform
 
