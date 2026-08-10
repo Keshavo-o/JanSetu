@@ -353,7 +353,7 @@ Future versions could integrate:
 * Mapbox
 * Geospatial MongoDB queries
 
-### Real-Time Status Updates
+### 3. Real-Time Status Updates
 
 Introduce WebSockets or Socket.IO to provide real-time updates when an issue changes state.
 
@@ -373,7 +373,7 @@ Resolved
 
 Citizens could receive updates without refreshing the page.
 
-### 3. Notification System
+### 4. Notification System
 
 Introduce multi-channel notifications through:
 
@@ -384,7 +384,7 @@ Introduce multi-channel notifications through:
 
 Users could be notified whenever their complaint changes status.
 
-### Duplicate Issue Detection
+### 5. Duplicate Issue Detection
 
 AI and geospatial analysis could identify multiple reports describing the same civic issue.
 
@@ -396,7 +396,7 @@ Report C ─┘
 
 This would help prevent authorities from processing the same problem repeatedly.
 
-### 4. Analytics Dashboard
+### 6. Analytics Dashboard
 
 A more advanced administrative dashboard could provide:
 
@@ -409,7 +409,7 @@ A more advanced administrative dashboard could provide:
 * Complaint trends
 * User participation metrics
 
-### Cloud Storage
+### 7. Cloud Storage
 
 Replace local file storage with scalable cloud object storage such as:
 
@@ -419,7 +419,7 @@ Replace local file storage with scalable cloud object storage such as:
 
 This would make media handling more suitable for production deployments.
 
-### 5. Civic Issue Heatmaps
+### 8. Civic Issue Heatmaps
 
 Geospatial analytics could visualize areas with high concentrations of civic complaints.
 
@@ -430,7 +430,7 @@ Low Density ───────► High Density
 
 This could help authorities prioritize areas requiring immediate attention.
 
-###  Department-Based Routing
+### 9. Department-Based Routing
 
 Future versions could automatically route complaints to the appropriate municipal department.
 
@@ -446,7 +446,7 @@ Classification
     └── Water ───────► Water Department
 ```
 
-### 6. Progressive Web App
+### 10. Progressive Web App
 
 Convert JanSetu into a PWA to provide:
 
@@ -469,6 +469,9 @@ A production-scale version could evolve from the current monolithic Express arch
                     └──────┬───────┘
                            │
                            ▼
+                    ┌──────────────┐
+                    │    nginX  │
+                    └──────┬───────┘
                     ┌──────────────┐
                     │ API Gateway  │
                     └──────┬───────┘
